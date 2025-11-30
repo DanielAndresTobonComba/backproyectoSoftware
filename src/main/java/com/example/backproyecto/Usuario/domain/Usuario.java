@@ -1,5 +1,6 @@
 package com.example.backproyecto.Usuario.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,8 +15,8 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private Long id;
-
     private String nombre;
     private String correo;
     private String telefono;
@@ -38,4 +39,6 @@ public class Usuario {
                 ", telefono='" + telefono + '\'' +
                 '}';
     }
+
+    
 }

@@ -1,0 +1,28 @@
+package com.example.backproyecto.FacturaAlqueria.domain;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.math.BigDecimal;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "Factura_alqueria")
+
+public class FacturaAlqueria {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idFactura")
+    private Long idFactura;
+
+    @Column(name = "total", precision = 10, scale = 2)
+    private BigDecimal total;
+
+    @Column(name = "id_usuario", nullable = false)
+    private Long idUsuario;
+
+    public FacturaAlqueria() {}
+}

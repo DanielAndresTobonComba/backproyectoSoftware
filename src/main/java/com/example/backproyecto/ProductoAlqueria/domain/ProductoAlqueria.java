@@ -1,5 +1,6 @@
 package com.example.backproyecto.ProductoAlqueria.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -13,9 +14,15 @@ import lombok.Setter;
 public class ProductoAlqueria {
 
     @Id
-    private String idProductoAlqueria; // Asegúrate de que este nombre coincida con el de la base de datos
+    @Column(name = "id_producto_alqueria")
+    private String idProductoAlqueria;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "precio")
     private Double precio;
+
 
     public ProductoAlqueria() {}
 
@@ -23,5 +30,6 @@ public class ProductoAlqueria {
         this.idProductoAlqueria = idProductoAlqueria;
         this.nombre = nombre;
         this.precio = precio;
+   
     }
 }

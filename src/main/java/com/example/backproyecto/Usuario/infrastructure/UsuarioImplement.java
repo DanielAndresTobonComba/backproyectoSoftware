@@ -20,4 +20,21 @@ public class UsuarioImplement implements IUsuario {
         return usuarioRepository.save(usuario);
     }
 
+    @Override
+    public Usuario buscarPorNombre(String nombre) {
+        return usuarioRepository.findByNombre(nombre)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + nombre));
+    }
+
+    @Override
+    public Usuario login(String nombre, String contrasena) {
+        Usuario usuario = usuarioRepository.findByNombre(nombre)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + nombre));
+
+        if (!usuario.getContrasena().equals(contrasena)) {
+            throw new RuntimeException("Contraseña incorrecta");
+        }
+        return usuario;
+    }
+
 }
