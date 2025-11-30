@@ -37,6 +37,9 @@ public class FacturaAlqueriaService implements IFacturaAlqueriaService {
         // Crear factura
         FacturaAlqueria factura = new FacturaAlqueria();
         factura.setTotal(request.getTotal());
+        factura.setFecha(request.getFecha());
+
+
         Long usuarioId = null;
         if (request.getUsuario() != null && request.getUsuario().get("id") != null) {
             Object idObj = request.getUsuario().get("id");

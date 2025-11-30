@@ -24,5 +24,8 @@ public class FacturaAlqueria {
     @Column(name = "id_usuario", nullable = false)
     private Long idUsuario;
 
+    @Column(name = "fecha", length = 16)  // VARCHAR(16)
+    private String fecha;
+
     public FacturaAlqueria() {}
 }
