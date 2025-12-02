@@ -10,7 +10,6 @@ import com.example.backproyecto.FacturaAlqueria.domain.HistorialDetalleFacturaDt
 import com.example.backproyecto.FacturaAlqueria.domain.ProductoFacturaAlqueria;
 import com.example.backproyecto.FacturaAlqueria.domain.ProductoFacturaId;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface ProductoFacturaAlqueriaRepository extends JpaRepository<ProductoFacturaAlqueria, ProductoFacturaId> {
