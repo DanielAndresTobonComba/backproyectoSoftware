@@ -1,5 +1,7 @@
 package com.example.backproyecto.FacturaSurtitiendas.Infrastructure;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,9 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.backproyecto.FacturaSurtitiendas.application.IFacturaSurtitiendasService;
 import com.example.backproyecto.FacturaSurtitiendas.domain.FacturaSurtitiendas;
+import com.example.backproyecto.FacturaSurtitiendas.domain.ProductoFacturaDetalleDto;
 import com.example.backproyecto.FacturaSurtitiendas.domain.ProductosSurtitiendasFactura;
 import com.example.backproyecto.FacturaSurtitiendas.domain.ProductosSurtitiendasFacturaId;
+import com.example.backproyecto.Usuario.infrastructure.UsuarioRepository;
 import com.example.backproyecto.productoSurtitiendas.domain.ProductoSurtitiendas;
+import com.example.backproyecto.FacturaSurtitiendas.domain.FacturaDetalleDto;
 import com.example.backproyecto.FacturaSurtitiendas.domain.FacturaRequestDto;
 import com.example.backproyecto.FacturaSurtitiendas.domain.ProductoSurtitiendasItemDto;
 
@@ -27,6 +32,9 @@ public class FacturaSurtitiendasService implements IFacturaSurtitiendasService {
 
     @Autowired
     private ProductosSurtitiendasFacturaRepository productosFacturaRepo;
+
+    @Autowired
+    private UsuarioRepository usuarioRepo;
 
     @Override
     @Transactional
@@ -62,5 +70,39 @@ public class FacturaSurtitiendasService implements IFacturaSurtitiendasService {
         }
 
         return saved;
+    }
+
+
+
+    @Override
+    public List<FacturaDetalleDto> obtenerFacturasPorNombre(String nombreUsuario) {
+
+        var usuario = usuarioRepo.findByNombre(nombreUsuario)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        var facturas = facturaRepo.findByIdUsuario(usuario.getId());
+
+        return facturas.stream().map(f -> {
+
+            var productos = productosFacturaRepo.findByFactura_IdFactura(f.getIdFactura())
+                    .stream()
+                    .map(det -> new ProductoFacturaDetalleDto(
+                            det.getProducto().getIdProducto(),
+                            det.getProducto().getNombre(),
+                            det.getProducto().getTamano(),
+                            det.getProducto().getImagenUrl(),
+                            det.getPrecioBase(),
+                            det.getCantidad(),
+                            det.getSubtotal()
+                    ))
+                    .toList();
+
+            return new FacturaDetalleDto(
+                    f.getIdFactura(),
+                    f.getTotal(),
+                    f.getFecha(),
+                    productos
+            );
+        }).toList();
     }
 }

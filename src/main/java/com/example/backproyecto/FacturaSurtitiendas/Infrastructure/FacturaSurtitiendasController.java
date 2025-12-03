@@ -24,4 +24,9 @@ public class FacturaSurtitiendasController {
         return ResponseEntity.ok(Map.of("mensaje", "Factura creada"));
 
     }
+
+    @GetMapping("/historial/{nombre}")
+    public ResponseEntity<?> obtenerFacturas(@PathVariable String nombre) {
+        return ResponseEntity.ok(service.obtenerFacturasPorNombre(nombre));
+    }
 }
