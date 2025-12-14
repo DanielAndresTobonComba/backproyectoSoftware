@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS producto_factura_alqueria (
   id_factura INT NOT NULL,
   id_producto_alqueria VARCHAR(45) NOT NULL,
   cantidad INT NOT NULL,
+  precio_base DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (id_factura, id_producto_alqueria),
   FOREIGN KEY (id_factura)
     REFERENCES factura_alqueria (id_factura)

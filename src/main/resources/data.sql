@@ -36,10 +36,10 @@ INSERT INTO factura_alqueria (total, id_usuario, fecha) VALUES
 (5100.00, 2, '2025-12-14');
 
 INSERT INTO producto_factura_alqueria
-(id_factura, id_producto, precio_base, cantidad, subtotal) VALUES
-(1, 'A001', 4500.00, 1, 4500.00),
-(1, 'A002', 2500.00, 1, 2500.00),
-(2, 'A004', 2500.00, 1, 2500.00);
+(id_factura, id_producto_alqueria, cantidad, precio_base, subtotal)
+VALUES
+(1, 'A001', 2, 2500, 5000),
+(1, 'A002', 1, 2600, 2600);
 
 INSERT INTO producto_surtitiendas_factura
 (id_producto, id_factura, precio_base, cantidad, subtotal) VALUES

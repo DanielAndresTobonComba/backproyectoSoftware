@@ -9,11 +9,12 @@ import java.util.List;
 
 public interface FacturaAlqueriaRepository extends JpaRepository<FacturaAlqueria, Long> {
 
-    @Query(value = """
-        SELECT f.idFactura, f.total, f.fecha, u.nombre AS cliente
-        FROM Factura_alqueria f
-        JOIN usuario u ON u.id = f.id_usuario
-        WHERE u.nombre = :nombreUsuario
-    """, nativeQuery = true)
-    List<Object[]> findFacturasByNombreUsuario(@Param("nombreUsuario") String nombreUsuario);
+@Query(value = """
+    SELECT f.id_factura, f.total, f.fecha, u.nombre AS cliente
+    FROM factura_alqueria f
+    JOIN usuario u ON u.id = f.id_usuario
+    WHERE u.nombre = :nombreUsuario
+""", nativeQuery = true)
+List<Object[]> findFacturasByNombreUsuario(@Param("nombreUsuario") String nombreUsuario);
+
 }

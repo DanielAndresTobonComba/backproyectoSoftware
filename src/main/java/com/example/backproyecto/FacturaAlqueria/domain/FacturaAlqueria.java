@@ -15,7 +15,7 @@ public class FacturaAlqueria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idFactura")
+    @Column(name = "id_factura")
     private Long idFactura;
 
     @Column(name = "total", precision = 10, scale = 2)

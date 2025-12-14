@@ -14,17 +14,18 @@ import java.util.List;
 
 public interface ProductoFacturaAlqueriaRepository extends JpaRepository<ProductoFacturaAlqueria, ProductoFacturaId> {
 
-     @Query(value = """
-        SELECT p.nombre, 
-               pf.cantidad, 
-               pf.precio_base AS precioUnitario,
-               pf.subtotal
-        FROM Producto_factura_alqueria pf
-        JOIN Producto_alqueria p 
-          ON p.id_producto_alqueria = pf.id_producto
-        WHERE pf.id_factura = :idFactura
-    """, nativeQuery = true)
-    List<Object[]> findDetallesByIdFactura(@Param("idFactura") Long idFactura);
+@Query(value = """
+    SELECT p.nombre,
+           pf.cantidad,
+           pf.precio_base AS precioUnitario,
+           pf.subtotal
+    FROM producto_factura_alqueria pf
+    JOIN producto_alqueria p
+      ON p.id_producto_alqueria = pf.id_producto_alqueria
+    WHERE pf.id_factura = :idFactura
+""", nativeQuery = true)
+List<Object[]> findDetallesByIdFactura(@Param("idFactura") Long idFactura);
+
 
 
     // Convierte los datos en DTOs directamente

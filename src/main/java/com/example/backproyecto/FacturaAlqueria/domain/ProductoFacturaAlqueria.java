@@ -16,22 +16,26 @@ public class ProductoFacturaAlqueria {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("idFactura")
-    @JoinColumn(name = "id_factura", referencedColumnName = "idFactura")
+    @JoinColumn(
+        name = "id_factura",
+        referencedColumnName = "id_factura"
+    )
     private FacturaAlqueria factura;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("idProducto")
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto_alqueria")
+    @JoinColumn(
+        name = "id_producto_alqueria",
+        referencedColumnName = "id_producto_alqueria"
+    )
     private ProductoAlqueria producto;
 
     @Column(name = "precio_base", nullable = false)
     private Double precioBase;
 
-    @Column(name = "cantidad", nullable = false)
+    @Column(nullable = false)
     private Integer cantidad;
 
-    @Column(name = "subtotal", nullable = false)
+    @Column(nullable = false)
     private Double subtotal;
-
-    public ProductoFacturaAlqueria() {}
 }
