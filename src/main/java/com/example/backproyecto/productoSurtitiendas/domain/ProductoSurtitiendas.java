@@ -1,7 +1,6 @@
 package com.example.backproyecto.productoSurtitiendas.domain;
 
-import java.util.List;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -15,15 +14,29 @@ import lombok.Setter;
 public class ProductoSurtitiendas {
 
     @Id
+    @Column(name = "id_producto")
     private String idProducto;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "precio")
     private Double precio;
+
+    @Column(name = "imagen_url")
     private String imagenUrl;
+
+    @Column(name = "tamano")
     private String tamano;
 
     public ProductoSurtitiendas() {}
 
-    public ProductoSurtitiendas(String idProducto, String nombre, Double precio, String imagenUrl, String tamano
+    public ProductoSurtitiendas(
+            String idProducto,
+            String nombre,
+            Double precio,
+            String imagenUrl,
+            String tamano
     ) {
         this.idProducto = idProducto;
         this.nombre = nombre;
@@ -31,6 +44,4 @@ public class ProductoSurtitiendas {
         this.imagenUrl = imagenUrl;
         this.tamano = tamano;
     }
-
-
 }
