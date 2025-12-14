@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Producto_factura_alqueria")
+@Table(name = "producto_factura_alqueria")
 public class ProductoFacturaAlqueria {
 
     @EmbeddedId

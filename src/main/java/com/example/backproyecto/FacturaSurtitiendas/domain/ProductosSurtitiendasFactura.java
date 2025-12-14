@@ -8,7 +8,7 @@ import com.example.backproyecto.productoSurtitiendas.domain.ProductoSurtitiendas
 @Getter
 @Setter
 @Entity
-@Table(name = "Productos_surtitiendas_factura")
+@Table(name = "producto_surtitiendas_factura")
 public class ProductosSurtitiendasFactura {
 
     @EmbeddedId
