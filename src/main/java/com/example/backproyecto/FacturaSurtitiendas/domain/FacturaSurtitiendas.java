@@ -20,7 +20,7 @@ public class FacturaSurtitiendas {
     @Column(precision = 10, scale = 2)
     private BigDecimal total;
 
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_usuario", nullable = false)
     private Long idUsuario;
 
     @Column(length = 16)
@@ -28,3 +28,4 @@ public class FacturaSurtitiendas {
 
     public FacturaSurtitiendas() {}
 }
+
